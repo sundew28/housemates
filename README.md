@@ -143,6 +143,7 @@ Authorization --> Type (Select Bearer Token)
 
 ## Improvements
 
+- Would have added the frontend.
 - I would like to make improvement to the error capturing by making use of error handler in laravel, make use of JsonResponse error handling
 - Check the quality of code by using tools like PHPsniffer, PHP-CS-Fixer with PSR2 and Symfony standards (much extra checks, closer to Laravel than PSR2).
 - Writing unit tests and integration tests to ensure API functionality

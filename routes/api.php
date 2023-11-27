@@ -66,4 +66,12 @@ Route::controller(HouseMatesApiController::class)->group(function () {
         }       
     });
 
+    // Create new property
+    Route::post('/room', 'roomStore');
+
+    // Edit a room
+    Route::put('/room', 'updateRoom');
+
+    // Delete a room
+    Route::delete('/room', 'deleteRoom');
 });

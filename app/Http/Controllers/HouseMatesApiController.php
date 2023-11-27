@@ -10,6 +10,10 @@ use Illuminate\Http\Response;
 use App\Models\Properties;
 use App\Models\Rooms;
 
+/*
+| The purpose of this class HouseMatesApiController is to receive a JSON API request and
+|  also return a JSON API response.
+*/
 class HouseMatesApiController extends Controller
 {
     public function __construct()
@@ -37,7 +41,7 @@ class HouseMatesApiController extends Controller
     }
 
     /**
-     * Edit a property
+     * Update a property
      *
      * @param PropertyRequest $request
      * 
@@ -86,15 +90,15 @@ class HouseMatesApiController extends Controller
     }
 
    /**
-     * Create a new property
+     * Create a new room
      *
-     * @param PropertyRequest $request
+     * @param RoomRequest $request
      * 
      * @return Json|Mixed
      */
     public function roomStore(RoomRequest $request): Mixed
     {
-        $property = Properties::create($request->all());
+        $room = Rooms::create($request->all());
 
         return response()->json([
             'status' => true,
@@ -102,5 +106,54 @@ class HouseMatesApiController extends Controller
             'room' => $room
         ], 200);
         
+    }
+
+    /**
+     * Update a room
+     *
+     * @param RoomRequest $request
+     * 
+     * @return Json|Mixed
+     */
+    public function updateRoom(RoomRequest $request): Mixed
+    {    
+        $room = Rooms::findOrFail($request->id);
+
+        if($room){
+            $room->property_id = $request->property_id;
+            $room->name = $request->name;
+            $room->size = $request->size;
+            $room->save();
+            return response()->json([
+                'status' => true,
+                'message' => "Room updated successfully!",
+                'room' => $room
+            ], 200);
+        } else {
+            return response()->json(['error' => 'Record not found']); 
+        }        
+    }
+
+    /**
+     * Delete a room
+     *
+     * @param Request $request
+     * 
+     * @return Json|Mixed
+     */
+    public function deleteRoom(Request $request): Mixed
+    {            
+        $room = Rooms::findOrFail($request->id);
+
+        if($room){
+            $room->delete();
+            return response()->json([
+                'status' => true,
+                'message' => "Room deleted successfully!",
+                'room' => $room
+            ], 200);
+        } else {
+            return response()->json(['error' => 'Record not found']);
+        }  
     }
 }

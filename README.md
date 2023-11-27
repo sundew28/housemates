@@ -76,21 +76,34 @@ Authorization --> Type (Select Bearer Token)
 ```
 ### API Endpoints
 
-1) POST <define your localhost with port/virtual domain>/api/property
+1) POST <define your localhost with port/virtual domain>/api/property - create a new property
 
     Parameters required
 
     ```bash
-
     name
     address
     ```
 
+2) GET <define your localhost with port/virtual domain>/api/property - Fetch all properties.
 
+3) PUT <define your localhost with port/virtual domain>/api/property/{id} - Edit a specific property. This is set in a way to update the specific property
 
+    Parameters required
 
+    ```bash
+    id
+    name
+    address
+    ```
 
+4) DELETE <define your localhost with port/virtual domain>/api/property/{id} - Delete a specific property.
 
+        Parameters required
+
+    ```bash
+    id   
+    ```
 
 ## Improvements
 

@@ -1,6 +1,6 @@
 # Housemates Code Test
 
-An application to send API request and receive response as JSON. I have used laravel 10 framework to create the application and JWT to set up the authentication.
+An application to send API request and receive response as JSON. I have used laravel 10 framework to create the application and JWT to set up the authentication. In some API endpoints i have made use of implicit model binding for smoother and faster results.
 
 ## Requirements
 

@@ -1,4 +1,4 @@
-# Passenger Code Test
+# Housemates Code Test
 
 An application to send API request and receive response as JSON. I have used laravel 10 framework to create the application and JWT to set up the authentication.
 

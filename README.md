@@ -1,66 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Passenger Code Test
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+An application to send API request and receive response as JSON. I have used laravel 10 framework to create the application and JWT to set up the authentication.
 
-## About Laravel
+## Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP :- 8.1 or above
+- MySQL :- 5.6 or above
+- Composer :- To install the dependencies
+- Postman :- To test the API calls
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clone the repo to your working directory using your favorite CLI console (eg: GitBash, PowerShell, cmd or any of your choice) 
 
-## Learning Laravel
+```bash
+$ git clone https://github.com/sundew28/housemates.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Once you are done cloning the repo next would be to run composer in your console to install laravel framework dependencies by running the below composer command. Make sure you have composer installed
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Via Composer
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+$ composer install
+```
 
-## Laravel Sponsors
+Next would be to change your .env file to set your database credentials in your root .env file. Once completed run the below command in your console which
+will set up your database tables migraion and seeding and setting up your JWT secret key in .env file.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+$ composer run setup
+```
+This would create all the basic tables to run your application smoothly. I have created a basic user account for easy to use in this case.
 
-### Premium Partners
+```php
+// User account
+   Email : admin@housemates.io
+   Password : adminadmin
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Security
 
-## Contributing
+For API authentication / security i have implemented the JWT auth instead of using sanctum or OAuth. JSON Web Token (JWT) is an open standard that allows two parties to securely send data and information as JSON objects. This information can be verified and trusted because it is digitally signed. JWT authentication has aided the wider adoption of stateless API services.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Your JWT authentication key is already set in the .env or enviorment file.
 
-## Code of Conduct
+Check your .env file if the secret key is generated with hash alogorithm, an example like below
+```
+JWT_SECRET=AYBKioTi6AOI1EOEMJkmrH8vHDquUnmot4ff6w7d4XBB3WC93ceqmSMJAtW8kxco
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+JWT_ALGO=HS256
 
-## Security Vulnerabilities
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Testing the Application
 
-## License
+All API endpoints require a post/get/put/delete request to be made which is already made mandatory in the api route file for secure transfer of data.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Task 
+
+The instructions were to call API end points through the console command. Listed like below after you login.
+
+Login :
+
+```bash
+Url : <define your localhost with port/virtual domain>/api/login
+Params : 
+- email <already a user account with email created. Please refer the doc for the informations>,
+- password
+```
+The API will return you with a secure token generated for use. Next you can use the token be set under the Authorization tab.
+
+```
+Authorization --> Type (Select Bearer Token)
+```
+### API Endpoints
+
+1) POST <define your localhost with port/virtual domain>/api/property
+
+    Parameters required
+
+    ```bash
+
+    name
+    address
+    ```
+
+
+
+
+
+
+
+## Improvements
+
+- I would like to make improvement to the error capturing by making use of error handler in laravel, make use of JsonResponse error handling
+- Check the quality of code by using tools like PHPsniffer, PHP-CS-Fixer with PSR2 and Symfony standards (much extra checks, closer to Laravel than PSR2).
+- Writing unit tests and integration tests to ensure API functionality
+- Keep the code as simple as possible and following S.O.L.I.D princples.
+- Improving validation of inputs.
+- Leverage caching techniques to improve API response times like Redis or Memcached.
+- Enhancing API development with versioning, rate limiting, and request throttling features.

@@ -99,7 +99,43 @@ Authorization --> Type (Select Bearer Token)
 
 4) DELETE <define your localhost with port/virtual domain>/api/property/{id} - Delete a specific property.
 
-        Parameters required
+    Parameters required
+
+    ```bash
+    id   
+    ```
+
+5) POST <define your localhost with port/virtual domain>/api/room - Create a new room for a property.
+
+    Parameters required
+
+    ```bash
+    property_id
+    name
+    size
+    ```
+
+6) GET <define your localhost with port/virtual domain>/api/room/{propertyId} - Fetch all rooms of a specific property.
+
+    Parameters required
+
+    ```bash
+    property_id    
+    ```
+
+7) PUT <define your localhost with port/virtual domain>/api/room/{id} - Edit a specific room.This is set in a way to update the specific room.
+    
+    Parameters required
+
+    ```bash
+    id
+    name
+    size
+    ```
+
+8) DELETE <define your localhost with port/virtual domain>/api/room/{id} - Delete a specific room.
+   
+   Parameters required
 
     ```bash
     id   
